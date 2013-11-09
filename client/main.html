@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title>phooey!</title>
+		<script src="partial_lib.js">
+		</script>
+	</head>
+	<body>
+		<script>
+			function sameType(a, b) {
+				return Object.getPrototypeOf(a) == Object.getPrototypeOf(b);
+			}
+			function Node(data, next) {
+				this.data = data;
+				this.next = next;
+			}
+			function BTNode(data, left, right) {
+				this.data = data;
+				this.left = left;
+				this.right = right;
+			}
+			function PNode(data, isWord, branches) {
+				this.data = data;
+				this.isWord = isWord;
+				this.branches = branches;
+			}
+			var list = new Node(5, new Node(4, new Node(3, null)));
+			var tree = new BTNode(3, new BTNode(4, null, null), new BTNode(5, null, null));
+			var trie = new PNode('c', 0, null);
+			var branches = new Array();
+			branches[9] = null;
+			branches[13] = new PNode('h', 0, null);
+			trie.branches = branches;
+			graph(list);
+			graph(tree);
+			graph(trie);
+		</script>
+	</body>
+</html>

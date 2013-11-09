@@ -1,0 +1,14 @@
+!!!5
+html
+	head
+		title #{title} - vdb.js
+		script(type='text/javascript', src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js")
+		script(type='text/javascript', src="http://d3js.org/d3.v3.min.js")
+		link(rel='stylesheet', href='stylesheets/stylesheet.css')
+	body
+		h1(align="center") vdb.js
+		svg(id='svg')
+		div(id='vdb_data')
+			h3 Node data
+			h4(id='node_data') n/a
+	script(type='text/javascript', src='js/visualize.js')

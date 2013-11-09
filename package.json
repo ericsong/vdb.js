@@ -1,0 +1,23 @@
+{
+  "name": "hcpin_graph",
+  "description": "visualization of protein relations",
+  "version": "0.0.1",
+  "author": "Eric Song",
+  "scripts": {
+    "start": "server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/regonics/hcpin_graph"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.2.x"
+  },
+  "dependencies": {
+    "jade": "*",
+    "express": "3.x",
+    "jquery": "*",
+    "errorhandlr": "0.0.4"
+ }
+}

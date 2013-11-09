@@ -1,0 +1,41 @@
+body{
+	font: 14px helvetica nueu, helvetica, arial, sans-serif;
+}
+
+#vdb_container{
+	width: 100%;
+	height: 500px;
+	display: table;
+}
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.node {
+  font: 10px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+
+svg {
+	width: 60%;
+	height:	500px;
+	border: 1px solid gray;
+	float: left;
+}
+
+#vdb_data{
+	width: calc(40% - 8px);
+	height: 500px;
+	border: 1px solid gray;
+	float: left;
+}
+
+
