@@ -4,7 +4,8 @@
 
 var VDB_LIB = {};
 
-VDB_LIB.server_name = "";
+VDB_LIB.server_name = "http://192.241.203.120/sendData";
+VDB_LIB.REQ_OBJ = new XMLHttpRequest();
 
 function TYPE(x) {
 	if (x == null) {
@@ -93,8 +94,6 @@ function GRAPH_NODE(curr, count) {
 	return [obj, count];
 }
 
-var REQ_OBJ = new XMLHttpRequest();
-
 function setServer(servername) {
 	VDB_LIB.server_name = servername;
 }
@@ -104,15 +103,15 @@ function SEND_DATA(data) {
 		document.write("ERROR: SERVER UNKNOWN<br>");
 		return;
 	}
-	REQ_OBJ.open("POST",VDB_LIB.server_name,true);
-	REQ_OBJ.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	REQ_OBJ.send("JSON=" + data);
+	VDB_LIB.REQ_OBJ.open("POST",VDB_LIB.server_name,true);
+	VDB_LIB.REQ_OBJ.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	VDB_LIB.REQ_OBJ.send("JSON=" + data);
 	WAIT_FOR_RESPONSE();
 }
 
 function WAIT_FOR_RESPONSE() {
-	if (REQ_OBJ.readyState == 4) {
-		console.log(REQ_OBJ.responseText);
+	if (VDB_LIB.REQ_OBJ.readyState == 4) {
+		console.log(VDB_LIB.REQ_OBJ.responseText);
 	} else {
 		setTimeout("WAIT_FOR_RESPONSE()", 100);
 	}
@@ -123,9 +122,5 @@ function drawTree(obj) {
 	json = json[0];
 	document.write(JSON.stringify(json) + "<br>");
 	console.log(VDB_LIB.server_name);
-	/*$.post( VDB_LIB.server_name, { data : JSON.stringify(json) }).done(function(data){
-				console.log("request sent");
-				console.log(data);
-	});*/
 	SEND_DATA(JSON.stringify(json));
 }
