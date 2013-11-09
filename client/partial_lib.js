@@ -9,7 +9,7 @@ function type(x) {
 	}
 }
 
-function GRAPH_ARRAY(items, count) {
+function GRAPH_ARRAY(items, count, p) {
 	var array_obj = [];
 	var c = 0;
 	for (var i in items) {
@@ -18,17 +18,21 @@ function GRAPH_ARRAY(items, count) {
 			continue;
 		} else {
 			if (type(item) == type([])) {
-				var graphArray = GRAPH_ARRAY(item, count + 1);
-				array_obj[c] = graphArray[0];
-				count = graphArray[1];
-				c = c + 1;
-			} else {
-				var graphNode = GRAPH_NODE(item, count);
-				if (graphNode[0] != null) {
-					array_obj[c] = graphNode[0];
+				var graphArray = GRAPH_ARRAY(item, count + 1, p);
+				for (var n in graphArray[0]) {
+					array_obj[c] = graphArray[0][n];
+					c = c + 1;
 				}
-				count = graphNode[1];
-				c = c + 1;
+				count = graphArray[1];
+			} else {
+				if (type(item) == type(p)) {
+					var graphNode = GRAPH_NODE(item, count);
+					if (graphNode[0] != null) {
+						array_obj[c] = graphNode[0];
+						c = c + 1;
+					}
+					count = graphNode[1];
+				}
 			}
 		}
 	}
@@ -56,9 +60,13 @@ function GRAPH_NODE(curr, count) {
 			c = c + 1;
 		} else {
 			if (type(ptr) == type([])) {
-				var graphArray = GRAPH_ARRAY(ptr, count);
+				var graphArray = GRAPH_ARRAY(ptr, count, curr);
 				if (graphArray[0] != null) {
-					data[d] = graphArray[0];
+					//data[d] = graphArray[0];
+					for (var n in graphArray[0]) {
+						children[c] = graphArray[0][n];
+						c = c + 1;
+					}
 				}
 				count = graphArray[1];
 			} else {
