@@ -18,7 +18,7 @@ var svg = d3.select("svg")
     .append("g")
     .attr("transform", "translate(40,0)");
 
-d3.json("./testdata/test2.json", function(error, root) {
+d3.json("./testdata/test3.json", function(error, root) {
   var nodes = tree.nodes(root);
   nodes[0].y = nodes[0].y + 20;
  
