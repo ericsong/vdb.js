@@ -30,7 +30,7 @@ VdbDataModel.find({}, function(err, query){
 
 app.configure(function(){
 	app.set('port', process.env.PORT || 8000);
-	app.set('address', process.env.ADDRESS || localhost);
+	app.set('address', process.env.ADDRESS || 'localhost');
 	app.set('views', __dirname + '/views');
 	app.set('view engine', 'jade');
 	app.use(express.bodyParser());
