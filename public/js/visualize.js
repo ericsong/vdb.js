@@ -45,8 +45,11 @@ var svg = d3.select("svg")
   node.append("circle")
       .attr("r", 8)
       .on("click", function(d){
+	d3.selectAll("circle").style("fill", "white");
+	d3.select(this).style("fill", "red");
 	$('#node_data').empty();
 	for(var i = 0; i < d.data.length; i++){
+		console.log(d);
 		var li = document.createElement('li');
 		li.appendChild(document.createTextNode(d.data[i].name + ": " + d.data[i].value + "\n"));
 		$('#node_data').append(li);
