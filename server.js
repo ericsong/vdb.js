@@ -18,6 +18,11 @@ app.get('/', function(req, res){
 	res.render('index.jade');
 });
 
+app.post('/testPOST', function(req, res){
+	console.log(req.body);
+	res.json({data: 'hello'});
+});
+
 server.listen(app.get('port'), function(){
 	console.log("Listening on port " + app.get('port'));
 });

@@ -27,7 +27,9 @@
 			var tree = new BTNode(3, new BTNode(4, null, null), new BTNode(5, null, null));
 			var trie = new PNode('c', 0, null);
 			var branches = new Array();
-			branches[9] = null;
+			branches[9] = new PNode('hello', 0, null);
+			branches[10] = new PNode('hello10', 0, null);
+			branches[11] = new PNode('hello11', 0, null);
 			branches[13] = new PNode('h', 0, null);
 			trie.branches = branches;
 			graph(list);
