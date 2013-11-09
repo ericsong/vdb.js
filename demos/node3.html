@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<title>phooey!</title>
+		<script src="vdb.js">
+		</script>
+	</head>
+	<body>
+		<script>
+
+			function Node(data, count, pid, address, next) {
+				this.data = data;
+				this.count = count;
+				this.pid = pid;
+				this.address = address;
+				this.next = next;
+			}
+			var list = new Node(5, 2, 0x12, 0x43A2, new Node(4, 3, 0x13, 0x466B, new Node(3, 1, 0x14, 0x4012, null)));
+			drawTree(list);
+
+		</script>
+	</body>
+</html>

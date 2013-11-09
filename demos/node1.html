@@ -1,0 +1,66 @@
+<html>
+	<head>
+		<title>phooey!</title>
+		<script src="vdb.js">
+		</script>
+	</head>
+	<body>
+		<script>
+
+			function PNode(character, isWord, branches) {
+				this.character = character;
+				this.isWord = isWord;
+				this.branches = branches;
+			}
+			var trie = new PNode(" ", false, null);
+			function insert(root, word) {
+				function hash(character) {
+					var chars = "abcdefghijklmnopqrstuvwxyz";
+					return chars.indexOf(character);
+				}
+				function createBranches(length) {
+					var branches = [];
+					for (var i = 0; i < length; i++) {
+						branches[i] = null;
+					}
+					return branches;
+				}
+				var ptr = root;
+				for (var i = 0; i < word.length; i++) {
+					var index = hash(word[i]);
+					if (index == -1) {
+						continue;
+					}
+					if (ptr.branches == null) {
+						ptr.branches = createBranches(26);
+					}
+					if (ptr.branches[index] == null) {
+						ptr.branches[index] = new PNode(word[i], false, null);
+					}
+					ptr = ptr.branches[index];
+				}
+				if (ptr.character != " ") {
+					ptr.isWord = true;
+				}
+			}
+			insert(trie, "ape");
+			insert(trie, "apple");
+			insert(trie, "car");
+			insert(trie, "care");
+			insert(trie, "cares");
+			insert(trie, "carry");
+			insert(trie, "cat");
+			insert(trie, "cater");
+			insert(trie, "go");
+			insert(trie, "gone");
+			insert(trie, "golf");
+			insert(trie, "gold");
+			insert(trie, "golang");
+			insert(trie, "google");
+			insert(trie, "fire");
+			insert(trie, "fox");
+			drawTree(trie);
+
+		</script>
+	</body>
+</html>
