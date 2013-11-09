@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>phooey!</title>
-		<script src="partial_lib.js">
+		<script src="vdb.js">
 		</script>
 	</head>
 	<body>
@@ -18,23 +18,52 @@
 				this.left = left;
 				this.right = right;
 			}
-			function PNode(data, isWord, branches) {
-				this.data = data;
+			function PNode(character, isWord, branches) {
+				this.character = character;
 				this.isWord = isWord;
 				this.branches = branches;
 			}
 			var list = new Node(5, new Node(4, new Node(3, null)));
 			var tree = new BTNode(3, new BTNode(4, null, null), new BTNode(5, null, null));
-			var trie = new PNode('c', 0, null);
-			var branches = new Array();
-			branches[9] = new PNode('hello', 0, null);
-			branches[10] = new PNode('hello10', 0, null);
-			branches[11] = new PNode('hello11', 0, null);
-			branches[13] = new PNode('h', 0, null);
-			trie.branches = branches;
-
-			setServer("http://localhost/sendData");
+			var trie = new PNode(' ', false, null);
+			function insert(root, word) {
+				function hash(character) {
+					var chars = "abdefghijklmnopqrstuvwxyz";
+					return chars.indexOf(character);
+				}
+				function createBranches(length) {
+					var branches = [];
+					for (var i = 0; i < length; i++) {
+						branches[i] = null;
+					}
+					return branches;
+				}
+				var ptr = root;
+				for (var i = 0; i < word.length; i++) {
+					var index = hash(word[i]);
+					if (index == -1) {
+						continue;
+					}
+					if (ptr.branches == null) {
+						ptr.branches = createBranches(26);
+					}
+					if (ptr.branches[index] == null) {
+						ptr.branches[index] = new PNode(word[i], false, null);
+					}
+					ptr = ptr.branches[index];
+				}
+				if (ptr.character != ' ') {
+					ptr.isWord = true;
+				}
+			}
+			insert(trie, "cat");
+			insert(trie, "car");
+			insert(trie, "cater");
+			setServer("http://192.241.203.120:80/testPOST");
+			drawTree(list);
+			drawTree(tree);
 			drawTree(trie);
+
 		</script>
 	</body>
 </html>
