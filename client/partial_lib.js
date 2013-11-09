@@ -1,4 +1,11 @@
-function type(x) {
+/* require: setServer, drawTree */
+
+var VDB_LIB = {};
+
+VDB_LIB.server_name = "";
+VDB_LIB.REQ_OBJ = new XMLHttpRequest();
+
+function TYPE(x) {
 	if (x == null) {
 		return "undefined";
 	}
@@ -17,7 +24,7 @@ function GRAPH_ARRAY(items, count, p) {
 		if (item == null) {
 			continue;
 		} else {
-			if (type(item) == type([])) {
+			if (TYPE(item) == TYPE([])) {
 				var graphArray = GRAPH_ARRAY(item, count + 1, p);
 				for (var n in graphArray[0]) {
 					array_obj[c] = graphArray[0][n];
@@ -25,7 +32,7 @@ function GRAPH_ARRAY(items, count, p) {
 				}
 				count = graphArray[1];
 			} else {
-				if (type(item) == type(p)) {
+				if (TYPE(item) == TYPE(p)) {
 					var graphNode = GRAPH_NODE(item, count);
 					if (graphNode[0] != null) {
 						array_obj[c] = graphNode[0];
@@ -53,13 +60,13 @@ function GRAPH_NODE(curr, count) {
 		if (ptr == null) {
 			continue;
 		}
-		if (type(curr) == type(ptr)) {
+		if (TYPE(curr) == TYPE(ptr)) {
 			var graphNode = GRAPH_NODE(ptr, count + 1);
 			children[c] = graphNode[0];
 			count = graphNode[1];
 			c = c + 1;
 		} else {
-			if (type(ptr) == type([])) {
+			if (TYPE(ptr) == TYPE([])) {
 				var graphArray = GRAPH_ARRAY(ptr, count, curr);
 				if (graphArray[0] != null) {
 					//data[d] = graphArray[0];
@@ -82,8 +89,37 @@ function GRAPH_NODE(curr, count) {
 	return [obj, count];
 }
 
-function graph(obj) {
+function setServer(servername) {
+	VDB_LIB.server_name = servername;
+}
+
+function SEND_DATA(data) {
+	if (VDB_LIB.server_name == "") {
+		document.write("ERROR: SERVER UNKNOWN<br>");
+		return;
+	}
+	VDB_LIB.REQ_OBJ.open("POST",VDB_LIB.server_name,true);
+	VDB_LIB.REQ_OBJ.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	VDB_LIB.REQ_OBJ.send("JSON=" + data);
+	WAIT_FOR_RESPONSE();
+}
+
+function WAIT_FOR_RESPONSE() {
+	if (VDB_LIB.REQ_OBJ.readyState == 4) {
+		console.log(VDB_LIB.REQ_OBJ.responseText);
+	} else {
+		setTimeout("WAIT_FOR_RESPONSE()", 100);
+	}
+}
+
+function drawTree(obj) {
 	var json = GRAPH_NODE(obj, 1);
 	json = json[0];
-	document.write(JSON.stringify(json) + "<br>");
+	console.log(JSON.stringify(json));
+	console.log(VDB_LIB.server_name);
+	/*$.post( VDB_LIB.server_name, { data : JSON.stringify(json) }).done(function(data){
+				console.log("request sent");
+				console.log(data);
+	});*/
+	SEND_DATA(JSON.stringify(json));
 }
