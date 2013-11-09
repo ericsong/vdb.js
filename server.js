@@ -20,7 +20,7 @@ app.get('/', function(req, res){
 
 app.post('/testPOST', function(req, res){
 	res.header('Access-Control-Allow-Origin', "*");
-	console.log(req.body);
+	console.log(req.body.JSON);
 	res.json({data: 'hello'});
 });
 
