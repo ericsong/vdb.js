@@ -53,7 +53,13 @@ app.post('/sendData', function(req, res){
 	newData.save();
 	console.log("Data received and stored");	
 
-	var returnURL = 'http://' + app.get('address') + '/getData?key=' + newKey;
+	var returnURL = 'http://' + app.get('address'); 
+
+	if(app.get('port') != 80){
+		returnURL = returnURL + ':' + app.get('port');
+	}
+
+	returnURL = returnURL + '/getData?key=' + newKey;
 	res.json({visual_URL: returnURL});
 });
 

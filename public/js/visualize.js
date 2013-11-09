@@ -44,7 +44,14 @@ var svg = d3.select("svg")
 
   node.append("circle")
       .attr("r", 8)
-      .on("click", function(d){ $('#node_data').text(d.data); });
+      .on("click", function(d){
+	$('#node_data').empty();
+	for(var i = 0; i < d.data.length; i++){
+		var li = document.createElement('li');
+		li.appendChild(document.createTextNode(d.data[i].name + ": " + d.data[i].value + "\n"));
+		$('#node_data').append(li);
+	}
+      });
 
   node.append("text")
       .attr("dx", function(d) { return d.children ? -8 : 8; })
