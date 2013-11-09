@@ -12,7 +12,16 @@
 				this.left = left;
 				this.right = right;
 			}
-			var tree = new BTNode(3, new BTNode(4, null, new BTNode(13, null, null)), new BTNode(5, null, null));
+			var tree = new BTNode(3, 
+				new BTNode(4, 
+					new BTNode(6, null, null), 
+					new BTNode(13, null, null)
+				), 
+				new BTNode(5, 
+					new BTNode(7, null, null),
+					new BTNode(8, null, null)
+				)
+			);
 			drawTree(tree);
 
 		</script>
