@@ -12,7 +12,7 @@ Download vdb.js:
 https://github.com/regonics/vdb.js/client/vdb.js
 ```
 
-Include vdb.js at the top of your source file:
+Include vdb.js before your source file:
 ```sh
 <script src="vdb.js">
 ```
