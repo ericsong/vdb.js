@@ -30,6 +30,7 @@ VdbDataModel.find({}, function(err, query){
 
 app.configure(function(){
 	app.set('port', process.env.PORT || 8000);
+	app.set('address', process.env.ADDRESS || localhost);
 	app.set('views', __dirname + '/views');
 	app.set('view engine', 'jade');
 	app.use(express.bodyParser());
@@ -50,8 +51,9 @@ app.post('/sendData', function(req, res){
 	newData.key = newKey;
 	newData.data = req.body.JSON;
 	newData.save();
+	console.log("Data received and stored");	
 
-	var returnURL = 'http://localhost/getData?key=' + newKey;
+	var returnURL = 'http://' + app.get('address') + '/getData?key=' + newKey;
 	res.json({visual_URL: returnURL});
 });
 
