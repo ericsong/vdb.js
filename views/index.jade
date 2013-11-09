@@ -10,12 +10,49 @@ html
 		script(type="text/javascript").
 			var VDB_VISUAL  = {};
 			VDB_VISUAL.data = !{data};
-
-		h1(align="center") vdb.js
+			
+	
+		vdb_header
+			div(id="banana_1_fill")
+				img(id="banana_1", src="img/banana.gif")
+			h1(id="vdb_header_text", align="center") ~vdb.js~
+			div(id="banana_2_fill")
+				img(id="banana_2", src="img/banana.gif")
 		svg(id='svg')
 		div(id='vdb_data')
 			div(id='node_data_container', align='center')
 				h3 Node Data
 				ul(id='node_data')
+
+		script(type="text/javascript").
+			var b1_velocity = 1;
+			var b1_limit = window.innerWidth/2 - 100 - 50;
+			var b2_velocity = 1;
+
+			setInterval(function(){
+				var margin = $("#banana_1").css("margin-left");
+				margin = margin.substring(0, margin.length-2 );
+				margin = Number(margin);
+				if(margin > b1_limit)
+					b1_velocity = -1;
+				if(margin < 0)
+					b1_velocity = 1;
+				margin = margin + b1_velocity;
+				margin = String(margin) + "px";
+				$("#banana_1").css("margin-left", margin);
+			}), 100;
+
+			setInterval(function(){
+				var margin = $("#banana_2").css("margin-right");
+				margin = margin.substring(0, margin.length-2 );
+				margin = Number(margin);
+				if(margin > b1_limit)
+					b2_velocity = -1;
+				if(margin < 0)
+					b2_velocity = 1;
+				margin = margin + b2_velocity;
+				margin = String(margin) + "px";
+				$("#banana_2").css("margin-right", margin);
+			}), 100;
 	script(type='text/javascript', src='js/visualize.js')
 	script(type='text/javascript', src='js/bootstrap.min.js')

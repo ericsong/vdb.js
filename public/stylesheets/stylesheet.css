@@ -42,4 +42,37 @@ svg {
 	float: left;
 }
 
+#vdb_header{
+	width: 100%;
+}
+
+#banana_1{
+	height: 100px;
+	width: 100px;
+	margin-left: 100px;
+	float: left;
+}
+
+#banana_1_fill{
+	width: calc(50% - 100px);
+	float: left;
+}
+
+#vdb_header_text{
+	width: 200px;
+	float: left;
+}
+
+#banana_2_fill{
+	width: calc(50% - 100px);
+	float: left;
+}
+
+#banana_2{
+	height: 100px;
+	width: 100px;
+	float: right;
+	clear: both;
+}
+
 
