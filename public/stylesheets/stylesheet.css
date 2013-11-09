@@ -31,6 +31,10 @@ svg {
 	float: left;
 }
 
+#node_data_container {
+
+}
+
 #vdb_data{
 	width: calc(40% - 8px);
 	height: 500px;
