@@ -26,7 +26,7 @@ function GRAPH_ARRAY(items, count, p) {
 			continue;
 		} else {
 			if (TYPE(item) == TYPE([])) {
-				var graphArray = GRAPH_ARRAY(item, count + 1, p);
+				var graphArray = GRAPH_ARRAY(item, count, p);
 				for (var n in graphArray[0]) {
 					array_obj[c] = graphArray[0][n];
 					c = c + 1;
@@ -34,7 +34,7 @@ function GRAPH_ARRAY(items, count, p) {
 				count = graphArray[1];
 			} else {
 				if (TYPE(item) == TYPE(p)) {
-					var graphNode = GRAPH_NODE(item, count);
+					var graphNode = GRAPH_NODE(item, count + 1);
 					if (graphNode[0] != null) {
 						array_obj[c] = graphNode[0];
 						c = c + 1;
@@ -79,6 +79,9 @@ function GRAPH_NODE(curr, count) {
 				count = graphArray[1];
 			} else {
 				data[d] = {"name": element, "value": ptr};
+				if (element == "character" || element == "data") {
+					obj["name"] = ptr;
+				}
 			}
 			d = d + 1;
 		}
