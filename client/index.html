@@ -25,10 +25,10 @@
 			}
 			var list = new Node(5, new Node(4, new Node(3, null)));
 			var tree = new BTNode(3, new BTNode(4, null, null), new BTNode(5, null, null));
-			var trie = new PNode(' ', false, null);
+			var trie = new PNode(" ", false, null);
 			function insert(root, word) {
 				function hash(character) {
-					var chars = "abdefghijklmnopqrstuvwxyz";
+					var chars = "abcdefghijklmnopqrstuvwxyz";
 					return chars.indexOf(character);
 				}
 				function createBranches(length) {
@@ -52,14 +52,18 @@
 					}
 					ptr = ptr.branches[index];
 				}
-				if (ptr.character != ' ') {
+				if (ptr.character != " ") {
 					ptr.isWord = true;
 				}
 			}
-			insert(trie, "cat");
+			insert(trie, "ape");
+			insert(trie, "apple");
 			insert(trie, "car");
-			insert(trie, "cater");
+			insert(trie, "care");
+			insert(trie, "cares");
 			insert(trie, "carry");
+			insert(trie, "cat");
+			insert(trie, "cater");
 			insert(trie, "go");
 			insert(trie, "gone");
 			insert(trie, "golf");
