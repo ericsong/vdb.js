@@ -18,7 +18,7 @@ var svg = d3.select("svg")
     .append("g")
     .attr("transform", "translate(40,0)");
 
-d3.json("./testdata/test3.json", function(error, root) {
+  root = VDB_VISUAL.data;
   var nodes = tree.nodes(root);
   nodes[0].y = nodes[0].y + 20;
  
@@ -51,7 +51,6 @@ d3.json("./testdata/test3.json", function(error, root) {
       .attr("dy", 3)
       .style("text-anchor", function(d) { return d.children ? "end" : "start"; })
       .text(function(d) { return d.name; });
-});
 
 d3.select(self.frameElement).style("height", height + "px");
 

@@ -6,6 +6,10 @@ html
 		script(type='text/javascript', src="http://d3js.org/d3.v3.min.js")
 		link(rel='stylesheet', href='stylesheets/stylesheet.css')
 	body
+		script(type="text/javascript").
+			var VDB_VISUAL  = {};
+			VDB_VISUAL.data = !{data};
+
 		h1(align="center") vdb.js
 		svg(id='svg')
 		div(id='vdb_data')
