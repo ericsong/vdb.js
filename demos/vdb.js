@@ -118,10 +118,7 @@ function WAIT_FOR_RESPONSE() {
 }
 
 function HANDLE(response) {
-	//console.log(response);
-	console.log(response);
-//	console.log(JSON.parse(response));
-//	window.location.href = JSON.parse(response).visual_URL;
+	window.location.href = JSON.parse(response).visual_URL;
 }
 
 function drawTree(obj) {
