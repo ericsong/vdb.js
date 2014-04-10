@@ -4,7 +4,7 @@
 
 var VDB_LIB = {};
 
-VDB_LIB.server_name = "http://192.241.203.120/sendData";
+VDB_LIB.server_name = "http://localhost:8000/sendData";
 VDB_LIB.REQ_OBJ = new XMLHttpRequest();
 
 function TYPE(x) {
@@ -119,7 +119,9 @@ function WAIT_FOR_RESPONSE() {
 
 function HANDLE(response) {
 	//console.log(response);
-	window.location.href = eval('(' + response + ')').visual_URL;
+	console.log(response);
+//	console.log(JSON.parse(response));
+//	window.location.href = JSON.parse(response).visual_URL;
 }
 
 function drawTree(obj) {
