@@ -1,7 +1,7 @@
 # vdb.js
 
 Visual debuggger js (vdb.js) is a flexible library for visualizing data structures written in Javascript. 
-
+ 
 With vdb.js you can:
 * View data structures in a more intuitive way
 * Share snapshots of your variable instances
