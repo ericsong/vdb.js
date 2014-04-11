@@ -32,3 +32,16 @@ Users also have the option of creating their own server instead of querying ours
 ```sh
 sudo PORT=80 node server.js
 ```
+
+##Running Examples
+http://ec2-54-242-13-238.compute-1.amazonaws.com/getData?key=19xtf1tu
+index
+
+http://ec2-54-242-13-238.compute-1.amazonaws.com/getData?key=19xtf1u0
+node1
+
+http://ec2-54-242-13-238.compute-1.amazonaws.com/getData?key=19xtf1u1
+node2
+
+http://ec2-54-242-13-238.compute-1.amazonaws.com/getData?key=19xtf1u2
+node3
