@@ -26,6 +26,9 @@ drawTree(tree);
 ##Installing a local server
 Users also have the option of creating their own server instead of querying ours
 ```sh
+npm install
+PORT=80 sudo node server.js
+//change vdb.js address to localhost
 ```
 
 ##Run the server
