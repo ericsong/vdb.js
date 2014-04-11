@@ -37,9 +37,12 @@ sudo PORT=80 node server.js
 
 * visual: http://ec2-54-242-13-238.compute-1.amazonaws.com/getData?key=19xtf1tu
 * code: https://raw.githubusercontent.com/ericsong/vdb.js/master/demos/index.html
+* 
 * visual: http://ec2-54-242-13-238.compute-1.amazonaws.com/getData?key=19xtf1u0
 * code: https://raw.githubusercontent.com/ericsong/vdb.js/master/demos/node1.html
+* 
 * visual: http://ec2-54-242-13-238.compute-1.amazonaws.com/getData?key=19xtf1u1
 * code: https://raw.githubusercontent.com/ericsong/vdb.js/master/demos/node2.html
+* 
 * visual: http://ec2-54-242-13-238.compute-1.amazonaws.com/getData?key=19xtf1u2
 * code: https://raw.githubusercontent.com/ericsong/vdb.js/master/demos/node3.html
