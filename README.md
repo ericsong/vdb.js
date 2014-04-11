@@ -35,8 +35,8 @@ sudo PORT=80 node server.js
 
 ##Running Examples
 
-visual: http://ec2-54-242-13-238.compute-1.amazonaws.com/getData?key=19xtf1tu
-code: https://raw.githubusercontent.com/ericsong/vdb.js/master/demos/index.html
+__visual__: http://ec2-54-242-13-238.compute-1.amazonaws.com/getData?key=19xtf1tu
+__code__: https://raw.githubusercontent.com/ericsong/vdb.js/master/demos/index.html
  
 visual: http://ec2-54-242-13-238.compute-1.amazonaws.com/getData?key=19xtf1u0
 code: https://raw.githubusercontent.com/ericsong/vdb.js/master/demos/node1.html
