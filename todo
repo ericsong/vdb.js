@@ -1,2 +1,28 @@
-Redo graphic container
-Add support for more data types
+Goal
+    Let users easily view their data structures
+        -Must be easy to use
+            -Easy to import library (copy/paste code if needed)
+            -Easy to call library (simple function call)
+        -Visual
+            -Easy to navigate structure
+            -Nice to look at
+
+Target
+    Beginner programmers (CS111 / CS112)
+        -Should be implemented in Java, Python, JS as they are three of the most popular languages used in beginner courses
+
+Implementation
+    -Front end needs to specify an input standard that client library adhere to.
+    Makes it easier to implement support for new languages and be open sourced
+    productively
+
+Supported Structures
+    -Primitive Types
+    -Array
+    -Map/Dictionary
+    -List
+        -Linked List
+        -Queue
+        -Stack
+    -Tree
+    -Graph // Needs to be broken down
