@@ -4,7 +4,7 @@
 
 var VDB_LIB = {};
 
-VDB_LIB.server_name = "http://ec2-54-242-13-238.compute-1.amazonaws.com/sendData";
+VDB_LIB.server_name = "http://localhost:8000/sendData";
 VDB_LIB.REQ_OBJ = new XMLHttpRequest();
 
 function TYPE(x) {
