@@ -34,6 +34,57 @@ function tree(){
         reposition(tree.vis);
         redraw();
     }
+
+    tree.addManyLeaves = function(_) {
+        function addLeaf(t){
+            if(t.v==_){ t.c.push({v:tree.size++, l:'?', p:{},c:[]}); return; }
+            t.c.forEach(addLeaf);
+        }
+
+        tree.vis = {
+    'v': 0,
+    'l': '?',
+    'p': {
+        'x': 300,
+        'y': 30
+    },
+    'c': [{
+        'v': 1,
+        'l': '?',
+        'c': [
+        {
+        'v': 5,
+        'l': '?',
+        'c': []
+        },
+        {
+        'v': 5,
+        'l': '?',
+        'c': []
+        },
+        {
+        'v': 5,
+        'l': '?',
+        'c': []
+        }
+        ]
+    }, {
+        'v': 2,
+        'l': '?',
+        'c': []
+    }, {
+        'v': 3,
+        'l': '?',
+        'c': []
+    },  {
+        'v': 4,
+        'l': 'hi',
+        'c': []
+    }]
+}
+        reposition(tree.vis);
+        redraw();
+    }
     
     updateIncMatx = function(){
         var n = tree.size-1;
@@ -70,7 +121,6 @@ function tree(){
         circles.transition().duration(500).attr('cx',function(d){ return d.p.x;}).attr('cy',function(d){ return d.p.y;});
         
         circles.enter().append('circle').attr('cx',function(d){ return d.f.p.x;}).attr('cy',function(d){ return d.f.p.y;}).attr('r',vRad)
-            .on('click',function(d){return tree.addLeaf(d.v);})
             .transition().duration(500).attr('cx',function(d){ return d.p.x;}).attr('cy',function(d){ return d.p.y;});
             
         d3.select('#incMatx').selectAll(".incrow").data(tree.incMatx)
@@ -112,21 +162,16 @@ function tree(){
 
         d3.select("#treesvg").append('g').attr('id','g_circles').selectAll('circle').data(tree.getVertices()).enter()
             .append('circle').attr('cx',function(d){ return d.p.x;}).attr('cy',function(d){ return d.p.y;}).attr('r',vRad)
-            .on('click',function(d){return tree.addLeaf(d.v);});
-            
+          
+           /* 
         d3.select("body").select("svg").append('g').attr('transform',function(){ return 'translate('+tree.incX+','+tree.incY+')';})
             .attr('id','incMatx').selectAll('.incrow')
             .data(tree.incMatx.map(function(d,i){ return {i:i, r:d};})).enter().append('g').attr('class','incrow');
+*/
 
-        tree.addLeaf(0);
-        tree.addLeaf(0);
-        tree.addLeaf(0);
-        tree.addLeaf(0);
-        tree.addLeaf(0);
-        tree.addLeaf(0);
+        tree.addManyLeaves(0);
     }
     initialize();
-
     return tree;
 }
 
