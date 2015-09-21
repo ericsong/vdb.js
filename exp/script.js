@@ -116,13 +116,18 @@ function tree(){
             .transition().duration(500)
             .attr('x2',function(d){ return d.p2.x;}).attr('y2',function(d){ return d.p2.y;});
             
-        var circles = d3.select("#g_circles").selectAll('circle').data(tree.getVertices());
+        var circles = d3.select("#g_circles").selectAll('circle').data(tree.getVertices()).enter().append("g");
 
         circles.transition().duration(500).attr('cx',function(d){ return d.p.x;}).attr('cy',function(d){ return d.p.y;});
         
-        circles.enter().append('circle').attr('cx',function(d){ return d.f.p.x;}).attr('cy',function(d){ return d.f.p.y;}).attr('r',vRad)
+        circles.append('circle').attr('cx',function(d){ return d.f.p.x;}).attr('cy',function(d){ return d.f.p.y;}).attr('r',vRad)
             .transition().duration(500).attr('cx',function(d){ return d.p.x;}).attr('cy',function(d){ return d.p.y;});
-            
+
+        circles.append("text"
+            ).attr('dx', function(d) { return d.p.x - 4; }
+            ).attr('dy', function(d) { return d.p.y + 5; }
+            ).text(function(d) { return d.l; });
+
         d3.select('#incMatx').selectAll(".incrow").data(tree.incMatx)
             .enter().append('g').attr('class','incrow');
             
