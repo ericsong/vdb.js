@@ -1,6 +1,6 @@
 function tree(){
     var svgW=958, svgH =460, vRad=12, tree={cx:300, cy:30, w:40, h:70};
-    tree.vis={v:0, l:'?', p:{x:tree.cx, y:tree.cy},c:[]};   
+    tree.vis={v:0, l:'r', p:{x:tree.cx, y:tree.cy},c:[]};   
     tree.size=1;
     tree.incMatx =[];
     tree.incX=500, tree.incY=30, tree.incS=20;
@@ -43,7 +43,7 @@ function tree(){
 
         tree.vis = {
     'v': 0,
-    'l': '?',
+    'l': 'h',
     'p': {
         'x': 300,
         'y': 30
@@ -115,19 +115,20 @@ function tree(){
             .attr('x2',function(d){ return d.p1.x;}).attr('y2',function(d){ return d.p1.y;})
             .transition().duration(500)
             .attr('x2',function(d){ return d.p2.x;}).attr('y2',function(d){ return d.p2.y;});
-            
+           
+
+        console.log(d3.select("#g_circles").selectAll('circle').data(tree.getVertices()).enter());
         var circles = d3.select("#g_circles").selectAll('circle').data(tree.getVertices()).enter().append("g");
 
+        console.log(circles);
         circles.transition().duration(500).attr('cx',function(d){ return d.p.x;}).attr('cy',function(d){ return d.p.y;});
         
         circles.append('circle').attr('cx',function(d){ return d.f.p.x;}).attr('cy',function(d){ return d.f.p.y;}).attr('r',vRad)
             .transition().duration(500).attr('cx',function(d){ return d.p.x;}).attr('cy',function(d){ return d.p.y;});
-
         circles.append("text"
             ).attr('dx', function(d) { return d.p.x - 4; }
             ).attr('dy', function(d) { return d.p.y + 5; }
             ).text(function(d) { return d.l; });
-
         d3.select('#incMatx').selectAll(".incrow").data(tree.incMatx)
             .enter().append('g').attr('class','incrow');
             
@@ -165,8 +166,12 @@ function tree(){
             .attr('x1',function(d){ return d.p1.x;}).attr('y1',function(d){ return d.p1.y;})
             .attr('x2',function(d){ return d.p2.x;}).attr('y2',function(d){ return d.p2.y;});
 
-        d3.select("#treesvg").append('g').attr('id','g_circles').selectAll('circle').data(tree.getVertices()).enter()
-            .append('circle').attr('cx',function(d){ return d.p.x;}).attr('cy',function(d){ return d.p.y;}).attr('r',vRad)
+        var circles = d3.select("#treesvg").append('g').attr('id','g_circles').selectAll('circle').data(tree.getVertices()).enter()
+        circles.append('circle').attr('cx',function(d){ return d.p.x;}).attr('cy',function(d){ return d.p.y;}).attr('r',vRad)
+        circles.append("text"
+            ).attr('dx', function(d) { return d.p.x - 4; }
+            ).attr('dy', function(d) { return d.p.y + 5; }
+            ).text(function(d) { return d.l; });
           
            /* 
         d3.select("body").select("svg").append('g').attr('transform',function(){ return 'translate('+tree.incX+','+tree.incY+')';})
