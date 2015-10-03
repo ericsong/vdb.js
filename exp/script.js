@@ -1,5 +1,5 @@
 function tree(){
-    var svgW=958, svgH =460, vRad=12, tree={cx:300, cy:30, w:40, h:70};
+    var svgW=500, svgH =460, vRad=12, tree={cx:200, cy:30, w:40, h:70};
     tree.vis={v:0, l:'r', p:{x:tree.cx, y:tree.cy},c:[]};   
     tree.size=1;
     tree.incMatx =[];
@@ -45,7 +45,7 @@ function tree(){
     'v': 0,
     'l': 'h',
     'p': {
-        'x': 300,
+        'x': 200,
         'y': 30
     },
     'c': [{
@@ -158,9 +158,7 @@ function tree(){
     }   
     
     initialize = function(){
-        d3.select("body").append("div").attr('id','navdiv');
-        
-        d3.select("body").append("svg").attr("width", svgW).attr("height", svgH).attr('id','treesvg');
+        d3.select("svg").attr("width", svgW).attr("height", svgH).attr('id','treesvg');
 
         d3.select("#treesvg").append('g').attr('id','g_lines').selectAll('line').data(tree.getEdges()).enter().append('line')
             .attr('x1',function(d){ return d.p1.x;}).attr('y1',function(d){ return d.p1.y;})
