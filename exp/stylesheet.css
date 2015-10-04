@@ -1,7 +1,15 @@
-body{
-    width:960px;
+svg {
+    float: left;
+    width:500px;
     margin:10px auto;
-}
+  }
+  .viewer {
+    width: 500px;
+    height: 460px;
+    float: left;
+    margin: 10px 0;
+    border: 1px solid black;
+  }
 circle{
   fill:white;
   stroke:steelblue;  
